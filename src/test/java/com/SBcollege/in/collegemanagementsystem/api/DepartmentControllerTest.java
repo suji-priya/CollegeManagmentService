@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -87,6 +88,7 @@ public class DepartmentControllerTest {
 	    ResponseEntity<String> response = departmentController.deleteDepartment(id);
 		System.out.println(response);
 		//assertNotNull(response.getBody());
+                verify(departmentService, times(1)).deleteDepartment(id);
 		assertThat(response.getStatusCodeValue()).isEqualTo(200);
 	    
 	}
